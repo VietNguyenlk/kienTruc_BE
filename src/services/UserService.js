@@ -1,10 +1,12 @@
 const User = require('../models/User');
+const bcrypt = require('bcrypt');
 
 const createUser = (newUser) => {
     return new Promise(async (resolve, reject) => {
-        const { maSV, tenSV, gioiTinh, ngaySinh, noiSinh, lop, nganh, khoaHoc, bacDaoTao, loaiHinhDaoTao } = newUser;
+        const { maSV, tenSV, gioiTinh, ngaySinh, noiSinh, lop, nganh, khoaHoc, bacDaoTao, loaiHinhDaoTao, password } = newUser;
 
         try {
+            const hash = bcrypt.hashSync(password, 10);
             const checkUser = await User.findOne({
                 maSV: maSV,
             });
@@ -25,6 +27,7 @@ const createUser = (newUser) => {
                 khoaHoc,
                 bacDaoTao,
                 loaiHinhDaoTao,
+                password: hash,
             });
             if (createUser) {
                 resolve({

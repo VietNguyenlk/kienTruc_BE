@@ -3,8 +3,8 @@ const UserServices = require('../services/UserService');
 const createUser = async(req, res) => {
     try {
         console.log("r",req.body);
-        const { maSV, tenSV, gioiTinh, ngaySinh, noiSinh, lop, nganh, khoaHoc, bacDaoTao, loaiHinhDaoTao } = req.body;
-        if (!maSV || !tenSV || !gioiTinh || !ngaySinh || !noiSinh || !lop || !nganh || !khoaHoc || !bacDaoTao || !loaiHinhDaoTao) {
+        const { maSV, tenSV, gioiTinh, ngaySinh, noiSinh, lop, nganh, khoaHoc, bacDaoTao, loaiHinhDaoTao,password } = req.body;
+        if (!maSV || !tenSV || !gioiTinh || !ngaySinh || !noiSinh || !lop || !nganh || !khoaHoc || !bacDaoTao || !loaiHinhDaoTao|| !password) {
             return res.status(200).json({
                 status: 'ERR',
                 message: 'The input is required',

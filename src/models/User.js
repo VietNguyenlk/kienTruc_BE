@@ -12,7 +12,6 @@ const sinhVienSchema = new mongoose.Schema(
             type: String,
             required: true,
             trim: true,
-            lowercase: true,
         },
         gioiTinh: {
             type: String,
@@ -45,7 +44,11 @@ const sinhVienSchema = new mongoose.Schema(
         loaiHinhDaoTao:{
             type: String,
             required: true,
-        },       
+        },    
+        password: {
+            type: String,
+            required: true,
+        },   
     },
     { timestamps: true },
 )
