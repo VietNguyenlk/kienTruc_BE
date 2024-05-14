@@ -9,11 +9,16 @@ const userController = require('../controllers/UserController');
 //     "gioiTinh":"Nam", "ngaySinh":"02/02/2002", 
 //     "noiSinh":"Bệnh viện Vĩnh Long", "lop":"DHKTPM16A", 
 //     "nganh":"Kĩ thuật phần mềm", "khoaHoc":"2020-2021", 
-//     "bacDaoTao":"Đại học", "loaiHinhDaoTao":"Chính quy"
+//     "bacDaoTao":"Đại học", "loaiHinhDaoTao":"Chính quy",
+//     "password":"20000001"
 // }
 routes.post('/createUser', userController.createUser);
 
 //[POST] http://localhost:3001/api/user/loginUser
+// {
+//     "maSV":"2000001",
+//     "password":"20000001"
+//   }
 routes.post('/loginUser', userController.loginUser);
 
 module.exports = routes;
