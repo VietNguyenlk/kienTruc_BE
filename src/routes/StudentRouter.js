@@ -1,6 +1,6 @@
 const express = require('express');
 const routes = express.Router();
-const userController = require('../controllers/UserController');
+const userController = require('../controllers/StudentController');
 
 // tạo user
 //[POST] http://localhost:3001/api/user/createUser
@@ -13,10 +13,9 @@ const userController = require('../controllers/UserController');
 //     "password":"20000001"
 // }
 routes.post('/createUser', userController.createUser);
-
 //[POST] http://localhost:3001/api/user/loginUser
 // {
-//     "maSV":"2000001",
+//     "maSV":"20000001",
 //     "password":"20000001"
 //   }
 routes.post('/loginUser', userController.loginUser);

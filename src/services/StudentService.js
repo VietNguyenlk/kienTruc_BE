@@ -1,4 +1,4 @@
-const User = require('../models/User');
+const Student = require('../models/Student');
 const bcrypt = require('bcrypt');
 
 const createUser = (newUser) => {
@@ -7,7 +7,7 @@ const createUser = (newUser) => {
 
         try {
             const hash = bcrypt.hashSync(password, 10);
-            const checkUser = await User.findOne({
+            const checkUser = await Student.findOne({
                 maSV: maSV,
             });
             if (checkUser !== null) {
@@ -16,7 +16,7 @@ const createUser = (newUser) => {
                     massage: 'User already exists',
                 });
             }
-            const createUser = await User.create({
+            const createUser = await Student.create({
                 maSV,
                 tenSV,
                 gioiTinh,
@@ -46,7 +46,7 @@ const loginUser = (user) => {
     return new Promise(async (resolve, reject) => {
         const { maSV, password } = user;
         try {
-            const checkUser = await User.findOne({
+            const checkUser = await Student.findOne({
                 maSV: maSV,
             });
             if (checkUser === null) {

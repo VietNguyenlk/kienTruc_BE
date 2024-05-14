@@ -52,6 +52,6 @@ const sinhVienSchema = new mongoose.Schema(
     },
     { timestamps: true },
 )
-const User = mongoose.model('User', sinhVienSchema);
+const Student = mongoose.model('Student', sinhVienSchema);
 
-module.exports = User;
+module.exports = Student;
