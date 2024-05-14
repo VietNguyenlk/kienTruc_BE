@@ -20,4 +20,6 @@ routes.post('/createUser', userController.createUser);
 //   }
 routes.post('/loginUser', userController.loginUser);
 
+//[GET] http://localhost:3001/api/user/getSVbyMaSV
+routes.get('/getSVbyMaSV', userController.getSVbyMaSV);
 module.exports = routes;

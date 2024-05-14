@@ -74,7 +74,31 @@ const loginUser = (user) => {
     });
 }
 
+const getSVbyMaSV = (maSV) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const user = await Student.findOne({
+                maSV: maSV,
+            });
+            if (user === null) {
+                resolve({
+                    status: 'ERR',
+                    message: 'User not found',
+                });
+            }
+            resolve({
+                status: 'OK',
+                message: 'SUCCESS',
+                data: user,
+            });
+        } catch (e) {
+            reject(e);
+        }
+    });
+}
+
 module.exports = {
     createUser,
     loginUser,
+    getSVbyMaSV,
 };
