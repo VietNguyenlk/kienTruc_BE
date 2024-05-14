@@ -20,6 +20,27 @@ const createUser = async(req, res) => {
     }
 }
 
+
+const loginUser = async(req, res) => {
+    try {
+        const { maSV, password } = req.body;
+        if (!maSV || !password) {
+            return res.status(200).json({
+                status: 'ERR',
+                message: 'The input is required',
+            });
+        } else {
+            const response = await UserServices.loginUser(req.body);
+            return res.status(200).json(response);
+        }
+    } catch (e) {
+        return res.status(404).json({
+            message: e,
+        });
+    }
+}
+
 module.exports = {
     createUser,
+    loginUser,
 };

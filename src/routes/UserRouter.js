@@ -13,5 +13,7 @@ const userController = require('../controllers/UserController');
 // }
 routes.post('/createUser', userController.createUser);
 
+//[POST] http://localhost:3001/api/user/loginUser
+routes.post('/loginUser', userController.loginUser);
 
 module.exports = routes;

@@ -42,6 +42,39 @@ const createUser = (newUser) => {
     });
 }
 
+const loginUser = (user) => {
+    return new Promise(async (resolve, reject) => {
+        const { maSV, password } = user;
+        try {
+            const checkUser = await User.findOne({
+                maSV: maSV,
+            });
+            if (checkUser === null) {
+                resolve({
+                    status: 'ERR',
+                    message: 'User not found',
+                });
+            }
+            const checkPassword = bcrypt.compareSync(password, checkUser.password);
+            if (checkPassword) {
+                resolve({
+                    status: 'OK',
+                    message: 'SUCCESS',
+                    data: checkUser,
+                });
+            } else {
+                resolve({
+                    status: 'ERR',
+                    message: 'Password is incorrect',
+                });
+            }
+        } catch (e) {
+            reject(e);
+        }
+    });
+}
+
 module.exports = {
     createUser,
+    loginUser,
 };
