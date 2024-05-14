@@ -16,6 +16,14 @@ routes.get('/getListLopHocPhan', lopHocPhanController.getListLopHocPhan);
 //[GET] http://localhost:3001/api/lophocphan/getListLopHocPhanByMaMonHoc/:maMonHoc
 routes.get('/getListLopHocPhanByMaMonHoc/:maMonHoc', lopHocPhanController.getListLopHocPhanByMaMonHoc);
 
+// thêm sinh viên vào lớp học phần
+//[POST] http://localhost:3001/api/lophocphan/addSinhVien
+routes.post('/addSinhVien', lopHocPhanController.addSinhVien);
+
+// show list lớp học phần theo mã sinh viên
+//[GET] http://localhost:3001/api/lophocphan/getListLopHocPhanByMaSV/:maSV
+routes.get('/getListLopHocPhanByMaSV/:maSV', lopHocPhanController.getListLopHocPhanByMaSV);
+
 
 
 module.exports = routes ;

@@ -82,8 +82,6 @@ const lophocphanSchema = new mongoose.Schema(
             default: [],
         },
        
-        // accessToken: { type: String, require: true },
-        // refreshToken: { type: String, require: true },
     },
     { timestamps: true },
 );

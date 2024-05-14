@@ -81,8 +81,65 @@ const getListLopHocPhanByMaMonHoc = (maMonHoc) => {
         }
     });
 }
+// thêm maSv vao danh sách sinh viên đã đăng ký
+const addSinhVien = (newSinhVien) => {  
+    return new Promise(async (resolve, reject) => {
+        const { maLopHocPhan, maSV } = newSinhVien;
+
+        try {
+            const checkLopHocPhan = await LopHocPhan.findOne({
+                maLopHocPhan: maLopHocPhan,
+            });
+            if (checkLopHocPhan === null) {
+                resolve({
+                    status: 'ERR',
+                    massage: 'LopHocPhan not exists',
+                });
+            }
+            const addSinhVien = await LopHocPhan.updateOne({
+                maLopHocPhan: maLopHocPhan,
+            }, {
+                $push: {
+                    danhSachSinhVien: maSV,
+                },
+            });
+            if (addSinhVien) {
+                resolve({
+                    status: 'OK',
+                    message: 'SUCCESS',
+                    data: addSinhVien,
+                });
+            }
+        } catch (e) {
+            reject(e);
+        }
+    });
+}//
+ // list lhp theo mã sv
+ const getListLopHocPhanByMaSV = (maSV) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const listLopHocPhan = await LopHocPhan.find({
+                danhSachSinhVien: maSV,
+            });
+          
+            if (listLopHocPhan) {
+                resolve({
+                    status: 'OK',
+                    message: 'SUCCESS',
+                    data: listLopHocPhan,
+                });
+            }
+            console.log("ạdflksdjfl",listLopHocPhan);
+        } catch (e) {
+            reject(e);
+        }
+    });
+}
 module.exports = {
     createLopHocPhan,
     getListLopHocPhan,
     getListLopHocPhanByMaMonHoc,
+    addSinhVien,
+    getListLopHocPhanByMaSV,
 };

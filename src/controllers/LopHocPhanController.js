@@ -45,9 +45,45 @@ const getListLopHocPhanByMaMonHoc = async(req, res) => {
         });
     }
 }
+// thêm maSv vao danh sách sinh viên đã đăng ký
+const addSinhVien = async(req, res) => {
+    try {
+        const { maLopHocPhan, maSV } = req.body;
+        if (!maLopHocPhan || !maSV) {
+            return res.status(200).json({
+                status: 'ERR',
+                message: 'The input is required',
+            });
+        } else {
+            console.log("r",req.body);
+            const response = await LopHocPhanService.addSinhVien(req.body);
+            return res.status(200).json(response);
+        }
+    } catch (e) {
+        return res.status(404).json({
+            message: e,
+        });
+    }
+}
+// get list lop hoc phan by ma sv
+const getListLopHocPhanByMaSV = async(req, res) => {
+    try {
+        const { maSV } = req.params;
+        console.log("maSV",maSV);
+        const response = await LopHocPhanService.getListLopHocPhanByMaSV(maSV);
+        return res.status(200).json(response);
+    } catch (e) {
+        return res.status(404).json({
+            message: e,
+        });
+    }
+}
+
 
 module.exports = {
     createLopHocPhan,
     getListLopHocPhan,
     getListLopHocPhanByMaMonHoc,
+    addSinhVien,
+    getListLopHocPhanByMaSV
 };
