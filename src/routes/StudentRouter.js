@@ -1,7 +1,6 @@
 const express = require('express');
 const routes = express.Router();
 const userController = require('../controllers/StudentController');
-
 // tạo user
 //[POST] http://localhost:3001/api/user/createUser
 // {
@@ -21,5 +20,6 @@ routes.post('/createUser', userController.createUser);
 routes.post('/loginUser', userController.loginUser);
 
 //[GET] http://localhost:3001/api/user/getSVbyMaSV
-routes.get('/getSVbyMaSV', userController.getSVbyMaSV);
+routes.get('/getSVbyMaSV/:id', userController.getSVbyMaSV);
+
 module.exports = routes;

@@ -39,24 +39,26 @@ const loginUser = async(req, res) => {
     }
 }
 
-const getSVbyMaSV = async(req, res) => {
+const getSVbyMaSV = async (req, res) => {
     try {
-        const { maSV } = req.body;
-        if (!maSV) {
-            return res.status(200).json({
-                status: 'ERR',
-                message: 'The input is required',
-            });
-        } else {
-            const response = await UserServices.getSVbyMaSV(maSV);
-            return res.status(200).json(response);
-        }
-    } catch (e) {
-        return res.status(404).json({
-            message: e,
+    //   console.log("req.body: dsf fd", req.body);  // Log body của request
+      const maSV = req.params.id;
+      if (!maSV) {
+        return res.status(200).json({
+          status: 'ERR',
+          message: 'The input is required',
         });
+      } else {
+        const response = await UserServices.getSVbyMaSV(maSV);
+        return res.status(200).json(response);
+      }
+    } catch (e) {
+      return res.status(404).json({
+        message: e.message,
+      });
     }
-}
+  };
+  
 
 module.exports = {
     createUser,
