@@ -13,6 +13,11 @@ const lophocphanSchema = new mongoose.Schema(
             required: true,
             trim: true,
         },
+        tenMonHoc: {
+            type: String,
+            default: '',
+            trim: true,
+        },
         maMonHoc: {
             type: String,
             required: true,

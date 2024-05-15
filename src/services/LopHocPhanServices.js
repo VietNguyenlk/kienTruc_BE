@@ -3,7 +3,7 @@ const LopHocPhan = require('../models/LopHocPhan');
 // createLopHocPhan
 const createLopHocPhan = (newLopHocPhan) => {
     return new Promise(async (resolve, reject) => {
-        const { maLopHocPhan, tenLopHocPhan, maMonHoc, soTC, soTiet, soTuan, soLuongSV, soLuongDaDangKy, soLuongConLai, tinhTrang, hocKy, namHoc, ngayBatDau, ngayKetThuc, tietHoc, giangVien, phongHoc, danhSachSinhVien } = newLopHocPhan;
+        const { maLopHocPhan, tenLopHocPhan,tenMonHoc, maMonHoc, soTC, soTiet, soTuan, soLuongSV, soLuongDaDangKy, soLuongConLai, tinhTrang, hocKy, namHoc, ngayBatDau, ngayKetThuc, tietHoc, giangVien, phongHoc, danhSachSinhVien } = newLopHocPhan;
 
         try {
             const checkLopHocPhan = await LopHocPhan.findOne({
@@ -18,6 +18,7 @@ const createLopHocPhan = (newLopHocPhan) => {
             const createLopHocPhan = await LopHocPhan.create({
                 maLopHocPhan,
                 tenLopHocPhan,
+                tenMonHoc,
                 maMonHoc,
                 soTC,
                 soTiet,

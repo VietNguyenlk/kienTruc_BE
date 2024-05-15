@@ -18,6 +18,10 @@ const monhocSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        namHoc: {
+            type: String,
+            default: '',
+        },
         // bắt buộc
         obligatory: {
             type: Boolean,
@@ -27,8 +31,7 @@ const monhocSchema = new mongoose.Schema(
             type: String,
             default: null,
         }
-        // accessToken: { type: String, require: true },
-        // refreshToken: { type: String, require: true },
+      
     },
     { timestamps: true },
 );

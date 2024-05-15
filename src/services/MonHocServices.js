@@ -2,7 +2,7 @@ const MonHoc = require('../models/MonHoc');
 // createSubject
 const createSubject = (newSubject) => {
     return new Promise(async (resolve, reject) => {
-        const { maHP, tenMonHoc, TC, obligatory, Prerequisites } = newSubject;
+        const { maHP, tenMonHoc, TC,namHoc, obligatory, Prerequisites } = newSubject;
 
         try {
             const checkSubject = await MonHoc.findOne({
@@ -17,6 +17,7 @@ const createSubject = (newSubject) => {
             const createSubject = await MonHoc.create({
                 maHP,
                 tenMonHoc,
+                namHoc,
                 TC,
                 obligatory,
                 Prerequisites,
