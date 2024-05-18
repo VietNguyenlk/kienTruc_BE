@@ -86,6 +86,10 @@ const lophocphanSchema = new mongoose.Schema(
             type: [],
             default: [],
         },
+        dayOfWeek: {
+            type: String,
+            default: "",
+        },
        
     },
     { timestamps: true },
