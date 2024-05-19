@@ -78,6 +78,26 @@ const getListLopHocPhanByMaSV = async(req, res) => {
         });
     }
 }
+// xóa mã sv vào danh sách sinh viên đã đăng ký
+const deleteSinhVien = async(req, res) => {
+    try {
+        const { maLopHocPhan, maSV } = req.body;
+        if (!maLopHocPhan || !maSV) {
+            return res.status(200).json({
+                status: 'ERR',
+                message: 'The input is required',
+            });
+        } else {
+            console.log("r",req.body);
+            const response = await LopHocPhanService.deleteSinhVien(req.body);
+            return res.status(200).json(response);
+        }
+    } catch (e) {
+        return res.status(404).json({
+            message: e,
+        });
+    }
+}
 
 
 module.exports = {
@@ -85,5 +105,6 @@ module.exports = {
     getListLopHocPhan,
     getListLopHocPhanByMaMonHoc,
     addSinhVien,
-    getListLopHocPhanByMaSV
+    getListLopHocPhanByMaSV,
+    deleteSinhVien
 };

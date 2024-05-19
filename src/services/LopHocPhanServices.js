@@ -138,10 +138,45 @@ const addSinhVien = (newSinhVien) => {
         }
     });
 }
+// xóa mã sv vào danh sách sinh viên đã đăng ký
+const deleteSinhVien = (newSinhVien) => {
+    return new Promise(async (resolve, reject) => {
+        const { maLopHocPhan, maSV } = newSinhVien;
+
+        try {
+            const checkLopHocPhan = await LopHocPhan.findOne({
+                maLopHocPhan: maLopHocPhan,
+            });
+            if (checkLopHocPhan === null) {
+                resolve({
+                    status: 'ERR',
+                    massage: 'LopHocPhan not exists',
+                });
+            }
+            const deleteSinhVien = await LopHocPhan.updateOne({
+                maLopHocPhan: maLopHocPhan,
+            }, {
+                $pull: {
+                    danhSachSinhVien: maSV,
+                },
+            });
+            if (deleteSinhVien) {
+                resolve({
+                    status: 'OK',
+                    message: 'SUCCESS',
+                    data: deleteSinhVien,
+                });
+            }
+        } catch (e) {
+            reject(e);
+        }
+    });
+}
 module.exports = {
     createLopHocPhan,
     getListLopHocPhan,
     getListLopHocPhanByMaMonHoc,
     addSinhVien,
     getListLopHocPhanByMaSV,
+    deleteSinhVien,
 };

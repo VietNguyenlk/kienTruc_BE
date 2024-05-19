@@ -24,6 +24,10 @@ routes.post('/addSinhVien', lopHocPhanController.addSinhVien);
 //[GET] http://localhost:3001/api/lophocphan/getListLopHocPhanByMaSV/:maSV
 routes.get('/getListLopHocPhanByMaSV/:maSV', lopHocPhanController.getListLopHocPhanByMaSV);
 
+// xóa sinh viên khỏi lớp học phần
+//[DELETE] http://localhost:3001/api/lophocphan/deleteSinhVien
+routes.post('/deleteSinhVien', lopHocPhanController.deleteSinhVien);
+
 
 
 module.exports = routes ;
